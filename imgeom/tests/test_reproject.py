@@ -1,7 +1,7 @@
 from astropy.io import fits
 from astropy import wcs as fitswcs
 from gwcs import wcs
-from gwcs import util as gwutil
+from gwcs import utils as gwutil
 from ..reproject import reproject
 from astropy.utils.data import get_pkg_data_filename
 
