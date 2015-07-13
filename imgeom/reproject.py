@@ -1,23 +1,23 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 from __future__ import (absolute_import, unicode_literals, division,
                         print_function)
-
 from astropy import wcs as fitswcs
 from gwcs import wcs
 import numpy as np
 
+
 def reproject(wcs1, wcs2, origin=0):
     """
-    Given two WCSs return a function which takes
-    coordinates in the first WCS and computes them in the second one.
+    Given two WCSs return a function which takes pixel coordinates in
+    the first WCS and computes them in the second one.
 
-    It performs the forward transformation of wcs1 followed by the
-    inverse of wcs2.
+    It performs the forward transformation of ``wcs1`` followed by the
+    inverse of ``wcs2``.
 
     Parameters
     ----------
-    wcs1, wcs2 : astropy.wcs.WCS or gwcs.wcs.WCS
-        WCS objects
+    wcs1, wcs2 : `~astropy.wcs.WCS` or `~gwcs.wcs.WCS`
+        WCS objects.
 
     origin : {0, 1}
         Whether to use 0- or 1-based pixel coordinates.
@@ -25,10 +25,10 @@ def reproject(wcs1, wcs2, origin=0):
     Returns
     -------
     _reproject : func
-        Function to compute the transformations.
-        It takes x, y positions in wcs1 and returns x,y positions in wcs2.
-
+        Function to compute the transformations.  It takes x, y
+        positions in ``wcs1`` and returns x, y positions in ``wcs2``.
     """
+
     args = []
     if isinstance(wcs1, fitswcs.WCS):
         forward = wcs1.all_pix2world
