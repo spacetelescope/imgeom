@@ -37,7 +37,7 @@ def reproject(wcs1, wcs2):
 
     if isinstance(wcs2, fitswcs.WCS):
         args = [1]
-        inverse = wcs2.wcs_world2pix
+        inverse = wcs2.all_world2pix
     elif isinstance(wcs2, wcs.WCS):
         inverse = wcs2.forward_transform.inverse
     else:
