@@ -3,7 +3,9 @@ from __future__ import (absolute_import, unicode_literals, division,
                         print_function)
 from astropy import wcs as fitswcs
 from gwcs import wcs
-import numpy as np
+
+
+all = ['reproject']
 
 
 def reproject(wcs1, wcs2, origin=0):
