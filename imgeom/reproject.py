@@ -5,7 +5,7 @@ from astropy import wcs as fitswcs
 from gwcs import wcs
 
 
-all = ['reproject']
+__all__ = ['reproject']
 
 
 def reproject(wcs1, wcs2, origin=0):
