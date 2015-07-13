@@ -6,7 +6,7 @@ from astropy import wcs as fitswcs
 from gwcs import wcs
 import numpy as np
 
-def reproject(wcs1, wcs2):
+def reproject(wcs1, wcs2, origin=0):
     """
     Given two WCSs return a function which takes
     coordinates in the first WCS and computes them in the second one.
@@ -19,6 +19,9 @@ def reproject(wcs1, wcs2):
     wcs1, wcs2 : astropy.wcs.WCS or gwcs.wcs.WCS
         WCS objects
 
+    origin : {0, 1}
+        Whether to use 0- or 1-based pixel coordinates.
+
     Returns
     -------
     _reproject : func
@@ -29,14 +32,14 @@ def reproject(wcs1, wcs2):
     args = []
     if isinstance(wcs1, fitswcs.WCS):
         forward = wcs1.all_pix2world
-        args = [1]
+        args = [origin]
     elif isinstance(wcs2, wcs.WCS):
         forward = wcs1.forward_transform
     else:
         raise ValueError("Expected astropy.wcs.WCS or gwcs.WCS object.")
 
     if isinstance(wcs2, fitswcs.WCS):
-        args = [1]
+        args = [origin]
         inverse = wcs2.all_world2pix
     elif isinstance(wcs2, wcs.WCS):
         inverse = wcs2.forward_transform.inverse
