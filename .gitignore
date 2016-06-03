@@ -45,8 +45,7 @@ distribute-*.tar.gz
 # Other
 .cache
 .tox
-.*.swp
-.*.swo
+.*.sw[op]
 *~
 
 # Mac OSX
